@@ -31,45 +31,47 @@
     <div class="col-1">
         <h3><?php echo $this->__('Register to Create an Account') ?></h3>
 		<input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
-		<ul class="form-list">
-			<li class="fields">
-				<div class="customer-name">
-				<div class="field name-firstname">
-					<label class="required" for="firstname"><em>*</em>First Name</label>
-					<div class="input-box">
-						<input type="text" class="input-text required-entry" maxlength="255" title="First Name" value="" name="" id="reg_firstname">
-					</div>
-				</div>
-				<div class="field name-lastname">
-					<label class="required" for="lastname"><em>*</em>Last Name</label>
-					<div class="input-box">
-						<input type="text" class="input-text required-entry" maxlength="255" title="Last Name" value="" name="" id="reg_lastname">
-					</div>
-				</div>
-				</div>
-                </li>
-                <li>
-                    <label class="required" for="email_address"><em>*</em>Email Address</label>
-                    <div class="input-box">
-                        <input type="email" class="input-text validate-email required-entry" title="Email Address" value="" id="reg_email_address" name="" spellcheck="false" autocorrect="off" autocapitalize="off">
-                    </div>
-                </li>
-                                                                        
+		<form id="reg-form" onsubmit="return copyDataFields();">
+			<ul class="form-list">
 				<li class="fields">
-                    <div class="field">
-                        <label class="required" for="password"><em>*</em>Password</label>
-                        <div class="input-box">
-                            <input type="password" class="input-text required-entry" title="Password" id="reg_password" name="">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="required" for="confirmation"><em>*</em>Confirm Password</label>
-                        <div class="input-box">
-                            <input type="password" class="input-text required-entry" id="reg_confirmation" title="Confirm Password" name="">
-                        </div>
-                    </div>
-                </li>
-		</ul>
+					<div class="customer-name">
+					<div class="field name-firstname">
+						<label class="required" for="firstname"><em>*</em>First Name</label>
+						<div class="input-box">
+							<input type="text" class="input-text required-entry" maxlength="255" title="First Name" value="" name="" id="reg_firstname">
+						</div>
+					</div>
+					<div class="field name-lastname">
+						<label class="required" for="lastname"><em>*</em>Last Name</label>
+						<div class="input-box">
+							<input type="text" class="input-text required-entry" maxlength="255" title="Last Name" value="" name="" id="reg_lastname">
+						</div>
+					</div>
+					</div>
+					</li>
+					<li>
+						<label class="required" for="email_address"><em>*</em>Email Address</label>
+						<div class="input-box">
+							<input type="email" class="input-text validate-email required-entry" title="Email Address" value="" id="reg_email_address" name="" spellcheck="false" autocorrect="off" autocapitalize="off">
+						</div>
+					</li>
+																			
+					<li class="fields">
+						<div class="field">
+							<label class="required" for="password"><em>*</em>Password</label>
+							<div class="input-box">
+								<input type="password" class="input-text required-entry validate-password" title="Password" id="reg_password" name="">
+							</div>
+						</div>
+						<div class="field">
+							<label class="required" for="confirmation"><em>*</em>Confirm Password</label>
+							<div class="input-box">
+								<input type="password" class="input-text required-entry validate-cpassword" id="reg_confirmation" title="Confirm Password" name="">
+							</div>
+						</div>
+					</li>
+			</ul>
+		</form>
 	</div>
     <div class="col-2">
         <h3><?php echo $this->__('Login') ?></h3>
@@ -122,6 +124,8 @@
             checkout.saveMethodUrl,
             {method: 'post', onFailure: checkout.ajaxFailure.bind(this), parameters: {method:'register'}}
         );
+		validator = new Validation($('reg-form'));
+		if(!validator.validate()) return false;
 		$('billing:firstname').value = $('reg_firstname').value;
 		$('billing:lastname').value = $('reg_lastname').value;
 		$('billing:email').value = $('reg_email_address').value;
@@ -130,6 +134,7 @@
 		
         Element.show('register-customer-password');
         checkout.gotoSection('billing', true);
+		return false;
 	}
     var loginForm = new VarienForm('login-form', true);
     $('login-email').observe('keypress', bindLoginPost);

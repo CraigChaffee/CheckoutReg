@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/* @category    Educ
+ * @package     Educ_CheckoutReg
+ */
+-->
+<config>
+    <modules>
+        <Educ_CheckoutReg>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Educ_CheckoutReg>
+    </modules>
+</config>
