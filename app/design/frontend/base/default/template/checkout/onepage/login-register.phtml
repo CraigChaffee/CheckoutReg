@@ -30,9 +30,53 @@
     <?php echo $this->getChildHtml('login_before')?>
     <div class="col-1">
         <h3><?php echo $this->__('Register to Create an Account') ?></h3>
-            <input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
-
-    </div>
+		<input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
+		<ul class="form-list">
+			<li class="fields">
+				<div class="customer-name">
+				<div class="field name-firstname">
+					<label class="required" for="firstname"><em>*</em>First Name</label>
+					<div class="input-box">
+						<input type="text" class="input-text required-entry" maxlength="255" title="First Name" value="" name="firstname" id="firstname">
+					</div>
+				</div>
+				<div class="field name-lastname">
+					<label class="required" for="lastname"><em>*</em>Last Name</label>
+					<div class="input-box">
+						<input type="text" class="input-text required-entry" maxlength="255" title="Last Name" value="" name="lastname" id="lastname">
+					</div>
+				</div>
+				</div>
+                </li>
+                <li>
+                    <label class="required" for="email_address"><em>*</em>Email Address</label>
+                    <div class="input-box">
+                        <input type="email" class="input-text validate-email required-entry" title="Email Address" value="" id="email_address" name="email" spellcheck="false" autocorrect="off" autocapitalize="off">
+                    </div>
+                </li>
+                                                                        
+				<li class="fields">
+                    <div class="field">
+                        <label class="required" for="password"><em>*</em>Password</label>
+                        <div class="input-box">
+                            <input type="password" class="input-text required-entry validate-password" title="Password" id="password" name="password">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="required" for="confirmation"><em>*</em>Confirm Password</label>
+                        <div class="input-box">
+                            <input type="password" class="input-text required-entry validate-cpassword" id="confirmation" title="Confirm Password" name="confirmation">
+                        </div>
+                    </div>
+                </li>
+                <li class="control">
+                    <div class="input-box">
+					<input type="checkbox" class="checkbox" id="is_subscribed" value="1" title="Sign Up for Newsletter" name="is_subscribed">
+				</div>
+				<label for="is_subscribed">Sign Up for Newsletter</label>
+			</li>
+		</ul>
+	</div>
     <div class="col-2">
         <h3><?php echo $this->__('Login') ?></h3>
         <?php echo $this->getMessagesBlock()->toHtml() ?>
