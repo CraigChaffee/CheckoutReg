@@ -64,7 +64,7 @@
     <div class="col-1">
         <div class="buttons-set">
             <p class="required">&nbsp;</p>
-            <button type="button" class="button" onclick="checkout.setMethod();"><span><span><?php echo $this->__('Register') ?></span></span></button>
+            <button type="button" class="button" onclick="copyDataFields();"><span><span><?php echo $this->__('Register') ?></span></span></button>
         </div>
     </div>
     <div class="col-2">
@@ -77,6 +77,15 @@
 </div>
 <script type="text/javascript">
 //<![CDATA[
+	copyDataFields = function(){
+		checkout.method = 'register';
+        var request = new Ajax.Request(
+            checkout.saveMethodUrl,
+            {method: 'post', onFailure: checkout.ajaxFailure.bind(this), parameters: {method:'register'}}
+        );
+        Element.show('register-customer-password');
+        checkout.gotoSection('billing', true);
+	}
     var loginForm = new VarienForm('login-form', true);
     $('login-email').observe('keypress', bindLoginPost);
     $('login-password').observe('keypress', bindLoginPost);
