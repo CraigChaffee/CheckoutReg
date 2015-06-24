@@ -123,10 +123,17 @@
 //<![CDATA[
 	copyDataFields = function(){
 		checkout.method = 'register';
-        var request = new Ajax.Request(
+        //This request is probably unnecessary.
+		var request = new Ajax.Request(
             checkout.saveMethodUrl,
             {method: 'post', onFailure: checkout.ajaxFailure.bind(this), parameters: {method:'register'}}
         );
+		$('billing:firstname').value = $('firstname').value;
+		$('billing:lastname').value = $('lastname').value;
+		$('billing:email').value = $('email_address').value;
+		$('billing:customer_password').value = $('password').value;
+		$('billing:confirm_password').value = $('confirmation').value;
+		
         Element.show('register-customer-password');
         checkout.gotoSection('billing', true);
 	}
