@@ -3,6 +3,11 @@
 	<checkout_onepage_index>
 		<reference name="checkout.onepage.login">
 			<action method="setTemplate"><template>checkout/onepage/login-register.phtml</template></action>
+			<block type="customer/form_register" name="reg_field" template="checkout/onepage/checkout-reg.phtml">
+				<block type="page/html_wrapper" name="customer.form.register.fields.before" as="form_fields_before" translate="label">
+                    <label>Form Fields Before</label>
+                </block>
+			</block>
 		</reference>
 	</checkout_onepage_index>
 </layout>
