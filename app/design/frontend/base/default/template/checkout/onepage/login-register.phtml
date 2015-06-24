@@ -37,13 +37,13 @@
 				<div class="field name-firstname">
 					<label class="required" for="firstname"><em>*</em>First Name</label>
 					<div class="input-box">
-						<input type="text" class="input-text required-entry" maxlength="255" title="First Name" value="" name="firstname" id="firstname">
+						<input type="text" class="input-text required-entry" maxlength="255" title="First Name" value="" name="" id="reg_firstname">
 					</div>
 				</div>
 				<div class="field name-lastname">
 					<label class="required" for="lastname"><em>*</em>Last Name</label>
 					<div class="input-box">
-						<input type="text" class="input-text required-entry" maxlength="255" title="Last Name" value="" name="lastname" id="lastname">
+						<input type="text" class="input-text required-entry" maxlength="255" title="Last Name" value="" name="" id="reg_lastname">
 					</div>
 				</div>
 				</div>
@@ -51,7 +51,7 @@
                 <li>
                     <label class="required" for="email_address"><em>*</em>Email Address</label>
                     <div class="input-box">
-                        <input type="email" class="input-text validate-email required-entry" title="Email Address" value="" id="email_address" name="email" spellcheck="false" autocorrect="off" autocapitalize="off">
+                        <input type="email" class="input-text validate-email required-entry" title="Email Address" value="" id="reg_email_address" name="" spellcheck="false" autocorrect="off" autocapitalize="off">
                     </div>
                 </li>
                                                                         
@@ -59,13 +59,13 @@
                     <div class="field">
                         <label class="required" for="password"><em>*</em>Password</label>
                         <div class="input-box">
-                            <input type="password" class="input-text required-entry validate-password" title="Password" id="password" name="password">
+                            <input type="password" class="input-text required-entry" title="Password" id="reg_password" name="">
                         </div>
                     </div>
                     <div class="field">
                         <label class="required" for="confirmation"><em>*</em>Confirm Password</label>
                         <div class="input-box">
-                            <input type="password" class="input-text required-entry validate-cpassword" id="confirmation" title="Confirm Password" name="confirmation">
+                            <input type="password" class="input-text required-entry" id="reg_confirmation" title="Confirm Password" name="">
                         </div>
                     </div>
                 </li>
@@ -122,11 +122,11 @@
             checkout.saveMethodUrl,
             {method: 'post', onFailure: checkout.ajaxFailure.bind(this), parameters: {method:'register'}}
         );
-		$('billing:firstname').value = $('firstname').value;
-		$('billing:lastname').value = $('lastname').value;
-		$('billing:email').value = $('email_address').value;
-		$('billing:customer_password').value = $('password').value;
-		$('billing:confirm_password').value = $('confirmation').value;
+		$('billing:firstname').value = $('reg_firstname').value;
+		$('billing:lastname').value = $('reg_lastname').value;
+		$('billing:email').value = $('reg_email_address').value;
+		$('billing:customer_password').value = $('reg_password').value;
+		$('billing:confirm_password').value = $('reg_confirmation').value;
 		
         Element.show('register-customer-password');
         checkout.gotoSection('billing', true);
